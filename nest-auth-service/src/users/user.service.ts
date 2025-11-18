@@ -18,7 +18,10 @@ export class UserService {
   }
 
   findByEmail(email: string) {
-    return this.repo.findOne({ where: { email } });
+    return this.repo.findOne({
+      where: { email },
+      select: ['id', 'email', 'password'],
+    });
   }
 
   findOne(id: number) {
